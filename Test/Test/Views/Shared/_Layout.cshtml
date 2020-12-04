@@ -1,0 +1,77 @@
+﻿@inject Test.Data.TestDbContext _context
+
+@{
+    var categories = new CategoryModel();
+    var category = _context.Categories.ToList() ?? new List<Category>();//List category có thể lấy như thế này
+    var port = _context.Posts.ToList() ?? new List<Post>();//Làm vậy để lỡ có null thì em vẫn khai báo đối tượng và không bị lỗi.
+                                                           // ?? là kiểm tra có null không, nếu có thì sẽ lấy cái phía sau.
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SimpleMagazine 01</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" media="screen,projection" type="text/css" href="/styleMain/css/main.css" />
+    <link rel="stylesheet" media="screen,projection" type="text/css" href="/styleMain/css/skin.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script type="text/javascript" src="/styleMain/javascript/cufon-yui.js"></script>
+    <script type="text/javascript" src="/styleMain/javascript/font.font.js"></script>
+    <script type="text/javascript">
+        Cufon.replace('h1, h2, h3, h4, h5, h6', {
+            hover: true
+        });
+    </script>
+</head>
+<body>
+    <!-- START PAGE SOURCE -->
+    <div class="main">
+        <div id="header" class="box">
+            <h1 id="logo">web<span>blog</span> </h1>
+            <ul id="nav">
+                <li class="current"><a asp-area="" asp-controller="Home" asp-action="Index">Homepage</a></li>
+                <li><a asp-area="" asp-controller="Categories" asp-action="Index">Categories</a></li>
+                <li><a asp-area="" asp-controller="Posts" asp-action="Index">Post</a></li>
+               <partial name="_LoginPartial.cshtml" />
+            </ul>           
+        </div>
+        <div id="section" class="box">
+            <div id="content" >
+                    @RenderBody()
+            </div>
+            <div id="aside" >
+                <form action="#" method="get" id="search">
+                    <p>
+                        <input type="text" size="20" class="input-text" value="Search our website" onfocus="if(this.value=='Search our website') this.value=''" />
+                        <input type="submit" value="Search" class="input-submit" />
+                    </p>
+                </form>
+                <h3>CATEGORY</h3>
+                <ul class="menu">
+                    @foreach (var item in category)
+                    {                     
+                        <li class="nav-item">
+                            <a asp-route-id="@item.CategoryId" class="nav-link">@item.CategoryName </a>
+                        </li>
+                    }
+                    <li><a asp-route-id="" asp-controller="Home" asp-action="Index">Show all</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2020 - WebBlog - <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+    <script type="text/javascript">Cufon.now();</script>
+    <!-- END PAGE SOURCE -->
+</body>
+</html>
+

@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Test.Models.PostDto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+
+<ul class="articles box">
+    <li>
+        @foreach (var item in Model)
+        {
+            <h2><a asp-action="Details" asp-route-id="@item.PostId">@item.PostTitle</a></h2>
+            <div class="article-info box">
+                <p class="f-left">Created Day: @item.DateCreated | Posted by <a href="#">Đàm Long</a></p>
+                <p class="f-left">Update Day:  @item.DateUpdate</p>
+            </div>
+            <p>@Html.Raw(item.PostDescription)</p>
+            <p class="more"><a asp-action="Details" asp-route-id="@item.PostId">Read more &raquo;</a></p>
+        }
+    </li>
+</ul>
