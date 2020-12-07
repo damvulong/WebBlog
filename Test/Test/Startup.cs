@@ -34,11 +34,12 @@ namespace Test
             services.AddDbContext<TestDbContext>(options =>
                options.UseSqlServer(Configuration.GetConnectionString("TestDbContextConnection")));
 
+
             services.AddOptions();                                        // Kích hoạt Options
             var mailsettings = Configuration.GetSection("MailSettings");  // đọc config
             services.Configure<MailSettings>(mailsettings);               // đăng ký để Inject
-
             services.AddTransient<IEmailSender, SendMailService>();        // Đăng ký dịch vụ Mail
+
 
             services.AddRazorPages();
         }

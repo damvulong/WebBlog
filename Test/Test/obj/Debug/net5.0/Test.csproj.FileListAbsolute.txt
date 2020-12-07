@@ -222,4 +222,3 @@ D:\VS19\Test\Test\bin\Debug\net5.0\MimeKit.dll
 D:\VS19\Test\Test\bin\Debug\net5.0\BouncyCastle.Crypto.dll
 D:\VS19\Test\Test\bin\Debug\net5.0\SendGrid.dll
 D:\VS19\Test\Test\bin\Debug\net5.0\StarkbankEcdsa.dll
-D:\VS19\Test\Test\bin\Debug\net5.0\secrets.json

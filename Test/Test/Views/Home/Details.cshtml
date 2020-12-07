@@ -10,11 +10,11 @@
 <h2><a asp-action="Details" asp-route-id="model.PostId">@Model.PostTitle</a></h2>
 <div class="article-info box">
     <p class="f-left">Category: @Model.Category.CategoryName</p>
-    <br /><p class="f-left">Created Day: @Model.DateCreated | Posted by <a href="#">Đàm Long</a></p>
-    <p class="f-left"><br />Update Day:  @Model.DateUpdate</p>
+    <p class="f-left">Created Day: @Model.DateCreated | Posted by <a href="#">Đàm Long</a></p>
+    <p class="f-left">Update Day:  @Model.DateUpdate</p>
 </div>
 <p><a>Description: <br /> </a>@Html.Raw(@Model.PostDescription)</p>
-<p>@Html.Raw(@Model.PostContent)</p>
+<p><a>Content: <br /></a>@Html.Raw(@Model.PostContent)</p>
 <p><img src="#" alt="" class="f-left" /></p>
 <div>
     <a asp-action="Index">Back to List</a>
